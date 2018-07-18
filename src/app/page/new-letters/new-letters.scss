@@ -1,0 +1,107 @@
+.accident-info {
+  .accident-injuries-stat {
+    .content {
+      margin: 0 15px;
+    }
+  }
+  .accident-brief {
+    margin-left:15px;
+
+    .item {
+      display: flex;
+      border-bottom: 1px solid #eeeeee;
+      padding: 10px 0px;
+      justify-content: space-around;
+      align-items: center;
+      .title {
+        font-size: 15px;
+        color: #333333;
+        position: relative;
+      }
+      .title:before {
+        content: '*';
+        position: absolute;
+        color: #ff0000;
+        font-size: 20px;
+        left: -9px;
+        top: 0px;
+      }
+      .value {
+        flex: 1;
+        margin-left: 15px;
+        padding-right: 10px;
+        display: flex;
+        align-items: center;
+        input {
+          text-align: right;
+          padding-right: 6px;
+        }
+      }
+      .isProject {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .isProject label:first-child {
+        flex: 1;
+        text-align: center;
+      }
+    }
+  }
+  .accident-type {
+    width: 100%;
+    border: 0px;
+  }
+
+  .accident-type:focus {
+    outline: 0px;
+    outline-offset: 0px;
+  }
+}
+
+.accident-injuries-stat .title,
+.accident-brief-process .title {
+  background: #f4fbfe;
+  padding: 20px 15px 10px 15px;
+  position: relative;
+}
+
+.accident-injuries-stat .title:before,
+.accident-brief-process .title:before {
+  content: '*';
+  position: absolute;
+  color: #ff0000;
+  font-size: 20px;
+  left: 6px;
+  top: 19px;
+}
+
+.accident-injuries-stat .content .category {
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.accident-injuries-stat .content .category .type {
+  font-size: 12px;
+  color: #999999;
+}
+
+.accident-injuries-stat .content .category .info {
+  display: flex;
+}
+
+.accident-injuries-stat .content .category .info .unit {
+  font-size: 15px;
+  color: #666666;
+  padding: 2px 0 2px 0;
+}
+
+/*.accident-injuries-stat .content .category .info .value input::-moz-placeholder,*/
+.accident-injuries-stat .content .category .info .value input::-webkit-input-placeholder {
+  color: #999999;
+  font-size: 12px;
+}
+
+.accident-brief-process .info {
+  padding: 10px 0 0 10px;
+}

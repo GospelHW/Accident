@@ -1,0 +1,236 @@
+<div class="page">
+  <!--<div class="app-header">-->
+    <!--<div class="app-header-navbar">-->
+      <!--<a (click)="goToStat()" class="back-home"><i class="fa fa-arrow-left"></i></a>-->
+      <!--<span style="">事故详情</span>-->
+    <!--</div>-->
+  <!--</div>-->
+  <div *ngIf="!lettersInfo">
+    <div class="weui-loadmore">
+      <i class="weui-loading"></i>
+      <span class="weui-loadmore__tips">正在加载</span>
+    </div>
+  </div>
+  <div class="page__hd app-content" *ngIf="lettersInfo">
+    <div class="detail-title">
+      <span>{{lettersInfo?.accident_name}}</span>
+    </div>
+    <div class="detail-content">
+      <div class="detail-brief-info">
+        <div class="item">
+          <div class="title">
+            <span>事故发生单位</span>
+          </div>
+          <div class="value">
+            <span>{{lettersInfo?.second_unit_name}}</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>项目名称</span>
+          </div>
+          <div class="value">
+            <span>{{lettersInfo?.proj_name}}</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>事故类型</span>
+          </div>
+          <div class="value">
+            <span>{{lettersInfo?.accident_type}}</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>事故发生时间</span>
+          </div>
+          <div class="value">
+            <span style="padding-right: 6px;">{{lettersInfo?.ocurr_time}}</span>
+            <!--<span>
+                            <img src="./assets/img/home/sg_kb_icon_02.png" alt=""
+                                 style="width: 15px;height: 20px;">
+                        </span>-->
+          </div>
+        </div>
+        <div class="item" >
+          <div class="title">
+            <span>事故发生部位</span>
+          </div>
+          <div class="value">
+            <span style="padding-right: 6px;">{{lettersInfo?.ocurr_part}}</span>
+          </div>
+        </div>
+        <div class="item" (click)="showMapBywx()">
+          <div class="title">
+            <span>事故发生地点</span>
+          </div>
+          <div class="value">
+            <span style="padding-right: 6px;">{{lettersInfo?.ocurr_location}}</span>
+            <span>
+                            <img src="./assets/img/home/sg_kb_icon_03_detail.png" alt=""
+                                 style="width: 25px;height: 25px;">
+                        </span>
+          </div>
+        </div>
+
+        <!--<div class="item">-->
+          <!--<div class="title">-->
+            <!--<span>事故发生所属单位</span>-->
+          <!--</div>-->
+          <!--<div class="value">-->
+            <!--<span style="padding-right: 6px;">{{lettersInfo?.ocurr_apartment}}</span>-->
+          <!--</div>-->
+        <!--</div>-->
+        <div style="margin-left: 16px; border-bottom: 1px solid #EEEEEE;padding: 12px 0;">
+          <div class="title">
+            <span>事故简要经过</span>
+          </div>
+          <div style="font-size: 13px; color: #999999; text-indent: 2em; padding-top: 10px;">
+            <span>{{lettersInfo?.content}}</span>
+          </div>
+        </div>
+        <div class="item" style="display: block;">
+          <div>
+            伤亡情况：
+          </div>
+          <div class="death-people">
+            <div *ngIf="lettersInfo?.company_died_amount+lettersInfo?.subcontract_died_amount+lettersInfo?.other_died_amount != 0">
+              <span>死亡
+              <span style="font-size: 19px; color:#ff801a; font-weight: 600;">{{lettersInfo?.company_died_amount+lettersInfo?.subcontract_died_amount+lettersInfo?.other_died_amount}}</span> 人</span>
+            </div>
+            <div *ngIf="lettersInfo?.company_seriousinjury_amount+lettersInfo?.subcontract_seriousinjury_amount+lettersInfo?.other_seriousinjury_amount != 0">
+              <span>重伤
+              <span style="font-size: 19px; color:#ff801a; font-weight: 600;">{{lettersInfo?.company_seriousinjury_amount+lettersInfo?.subcontract_seriousinjury_amount+lettersInfo?.other_seriousinjury_amount}}</span> 人</span>
+            </div>
+            <div *ngIf="lettersInfo?.company_missing_amount+lettersInfo?.subcontract_missing_amount+lettersInfo?.other_missing_amount != 0">
+              <span>失踪
+              <span style="font-size: 19px; color:#ff801a; font-weight: 600;">{{lettersInfo?.company_missing_amount+lettersInfo?.subcontract_missing_amount+lettersInfo?.other_missing_amount}}</span> 人</span>
+            </div>
+            <div *ngIf="lettersInfo?.company_stucking_amount+lettersInfo?.subcontract_stucking_amount+lettersInfo?.other_stucking_amount != 0">
+              <span>被困
+              <span style="font-size: 19px; color:#ff801a; font-weight: 600;">{{lettersInfo?.company_stucking_amount+lettersInfo?.subcontract_stucking_amount+lettersInfo?.other_stucking_amount}}</span> 人</span>
+            </div>
+            <div *ngIf="lettersInfo?.company_died_amount+lettersInfo?.subcontract_died_amount+lettersInfo?.other_died_amount
+             +lettersInfo?.company_missing_amount+lettersInfo?.subcontract_missing_amount+lettersInfo?.other_missing_amount+
+             lettersInfo?.company_stucking_amount+lettersInfo?.subcontract_stucking_amount+lettersInfo?.other_stucking_amount
+             +lettersInfo?.company_seriousinjury_amount+lettersInfo?.subcontract_seriousinjury_amount+lettersInfo?.other_seriousinjury_amount== 0">
+              <img src="./assets/img/home/sg_kb_icon_people.png" alt=""
+                   style="width:21px; height: 21px; vertical-align: middle;">
+              <span style="color: #30d05f;">暂无伤亡人员</span>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>工程类型</span>
+          </div>
+          <div class="value">
+            <span>{{lettersInfo?.proj_type}}</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>投资项目</span>
+          </div>
+          <div class="value">
+            <span>{{lettersInfo?.is_invest == '00'? '否':'是'}}</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>海外项目</span>
+          </div>
+          <div class="value">
+            <span>{{lettersInfo?.is_abroad == '00'? '否':'是'}}</span>
+          </div>
+        </div>
+
+      </div>
+      <div class="accident-follow">
+        <div class="title">
+          <span>事故跟踪</span>
+        </div>
+        <div class="content">
+          <div class="timeline" >
+            <div class="timeline-item">
+              <div class="timeline-date">{{lettersInSublet?.created_time}}</div>
+              <div class="timeline-point hide-border complete-status"></div>
+              <div class="timeline-event">
+                <div class="timeline-header">伤亡情况：
+                  死亡 <span class="people-number">{{lettersInSublet?.company_died_amount+lettersInSublet?.subcontract_died_amount+lettersInSublet?.other_died_amount}}</span>人
+                  重伤 <span class="people-number">{{lettersInSublet?.company_seriousinjury_amount+lettersInSublet?.subcontract_seriousinjury_amount+lettersInSublet?.other_seriousinjury_amount}}</span>人
+                  失踪 <span class="people-number">{{lettersInSublet?.company_missing_amount+lettersInSublet?.subcontract_missing_amount+lettersInSublet?.other_missing_amount}}</span>人
+                  被困 <span class="people-number">{{lettersInSublet?.company_stucking_amount+lettersInSublet?.subcontract_stucking_amount+lettersInSublet?.other_stucking_amount}}</span>人
+                </div>
+                <div class="timeline-header">
+                  <span>{{lettersInSublet?.proj_name}} </span>
+                  <span>{{lettersInSublet?.jobTitle}} </span>
+                </div>
+                <div class="timeline-header">
+                  <span>{{lettersInSublet?.contacts}} </span>
+                  <span style="color:#508dff;">
+                    <a href="tel:{{lettersInSublet?.phone}}"><i class="fa fa-volume-control-phone"></i>{{lettersInSublet?.phone}}</a>
+
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="timeline" *ngFor="let data of subletInfo">
+            <div class="timeline-item">
+              <div class="timeline-date">{{data?.created_time}}</div>
+              <div class="timeline-point hide-border complete-status"></div>
+              <div class="timeline-event">
+                <div class="timeline-header">{{data?.new_content}}</div>
+                <div class="timeline-header">伤亡情况：
+                  死亡 <span class="people-number">{{data?.company_died_amount+data?.subcontract_died_amount+data?.other_died_amount}}</span>人
+                  重伤 <span class="people-number">{{data?.company_seriousinjury_amount+data?.subcontract_seriousinjury_amount+data?.other_seriousinjury_amount}}</span>人
+                  失踪 <span class="people-number">{{data?.company_missing_amount+data?.subcontract_missing_amount+data?.other_missing_amount}}</span>人
+                  被困 <span class="people-number">{{data?.company_stucking_amount+data?.subcontract_stucking_amount+data?.other_stucking_amount}}</span>人
+                </div>
+                <div class="timeline-header" *ngIf="data?.direct_economy_damage">经济损失：{{data?.direct_economy_damage}}万元</div>
+                <div class="timeline-header">
+                  <span>{{data?.proj_name}} </span>
+                  <span>{{data?.jobTitle}} </span>
+                </div>
+                <div class="timeline-header">
+                  <span>{{data?.contacts}} </span>
+                  <span style="color:#508dff;"><a href="tel:{{data?.phone}}"><i class="fa fa-volume-control-phone"></i>{{data?.phone}}</a></span>
+                </div>
+                <div class="timeline-body">
+                  <!--<div class="photo" *ngIf="data.photo.length > 0">
+                    <div  *ngFor="let e of data.photo">
+                      <img [src]="e.path" alt="" src="width:125px; height:70px;">
+                    </div>
+                  </div>-->
+                  <div class="photo" *ngIf="data.photo.length > 0;" >
+                    <img *ngFor="let pp of data.photo;let i = index;" [src]="pp.path"
+                         (error)="'./assets/img/home/img_null.jpg'" alt="" height="75" width="75" style="margin:3px;"
+                         (click)="previewPhoto(i,data.photo)">
+                  </div>
+                  <!--<div class="voice">-->
+                    <!--<img src="./assets/img/home/sg_kb_icon_10.png" alt=""-->
+                         <!--style="width: 12px; height:12px;">-->
+                    <!--<div style="width: 66px; height:15px ; background: #a5d850;"></div>-->
+                  <!--</div>-->
+                  <!--<div class="video">-->
+                    <!--<img src="./assets/img/home/sg_kb_icon_09.png" alt=""-->
+                         <!--style="width: 12px; height:12px;">-->
+                    <!--<div style="width: 30px; height: 30px; background: #dddddd;"></div>-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; position: fixed; width: 100%; bottom: 10px;" *ngIf="isManager">
+        <button type="button" class="btn btn-primary" (click)="goToSublet()"
+                style="height: 75px; width: 75px; line-height: 64px; border-radius: 50%;">
+          续报
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

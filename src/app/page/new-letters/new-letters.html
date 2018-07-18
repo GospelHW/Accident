@@ -1,0 +1,326 @@
+<div class="page">
+  <!--<div class="app-header">-->
+  <!--<div class="app-header-navbar">-->
+  <!--<a (click)="goToStat()" class="back-home"><i class="fa fa-arrow-left"></i></a>-->
+  <!--<span style="">新建事故</span>-->
+  <!--</div>-->
+  <!--</div>-->
+  <div class="page__hd app-content">
+    <form class="accident-info" id="accidentForm" [formGroup]="accidentForm" (ngSubmit)="submitForm()">
+      <div class="accident-brief">
+        <div>
+          <div class="item">
+            <div class="title">
+              <span>项目名称</span>
+            </div>
+            <div class="value">
+              <input class="weui-input" type="text" placeholder="请输入" formControlName="projName"/>
+              <img src="./assets/img/home/sg_kb_icon_go01_gaoliang.png" alt=""
+                   style="width: 25px; height: 25px;">
+            </div>
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.projName}}</span>
+        </div>
+        <div>
+          <div class="item">
+            <div class="title">
+              <span>事故发生时间</span>
+            </div>
+            <div class="value">
+              <input class="weui-input" type="datetime-local" placeholder="请输入" formControlName="ocurrTime"
+              />
+            </div>
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.ocurrTime}}</span>
+        </div>
+        <div>
+          <div class="item">
+            <div class="title">
+              <span>事故发生部位</span>
+            </div>
+            <div class="value">
+              <input class="weui-input" type="text" placeholder="请输入" formControlName="ocurrPart"/>
+            </div>
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.ocurrPart}}</span>
+        </div>
+        <div>
+          <div class="item">
+            <div class="title">
+              <span>事故发生地点</span>
+            </div>
+            <div class="value">
+              <input class="weui-input" type="text" placeholder="正在定位..." formControlName="ocurrLocation"
+                     [(ngModel)]="currAddress"/>
+              <img src="./assets/img/home/sg_kb_icon_03_gaoliang.png" alt=""
+                   style="width: 25px; height: 25px;" (click)="getLocationBywx()">
+            </div>
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.ocurrLocation}}</span>
+        </div>
+        <div>
+          <div class="item">
+            <div class="title">
+              <span>事故类型</span>
+            </div>
+            <div class="value">
+              <select name="select2" class="accident-type" formControlName="accidentType">
+                <option value="">请选择</option>
+                <option *ngFor="let accident of accidentTypeList" [value]="accident?.code">{{accident?.name}}</option>
+              </select>
+            </div>
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.accidentType}}</span>
+        </div>
+      </div>
+      <div class="accident-brief-process">
+        <div class="title">
+          事故简要经过
+        </div>
+        <div class="info">
+          <textarea class="weui-textarea" placeholder="请描述事故的经过" rows="4"
+                    formControlName="content"
+          ></textarea>
+          <!--<div class="weui-textarea-counter"><span>{{inputWords}}</span>/500</div>-->
+        </div>
+        <span class="error-info" style="color: red">{{formErrors.content}}</span>
+      </div>
+      <div class="accident-injuries-stat">
+        <div class="title">
+          事故伤亡情况
+        </div>
+        <div class="content">
+          <div class="category">
+            <div class="type">
+              死亡
+            </div>
+            <div class="info">
+              <div>
+                <div class="unit">企业职工</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="companyDiedAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.companyDiedAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">分包单位</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="subcontractDiedAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.subcontractDiedAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">其他</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="otherDiedAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.otherDiedAmount}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="category">
+            <div class="type">
+              重伤
+            </div>
+            <div class="info">
+              <div>
+                <div class="unit">企业职工</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入"
+                         formControlName="companySeriousInjuryAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.companySeriousInjuryAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">分包单位</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入"
+                         formControlName="subcontractSeriousInjuryAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.subcontractSeriousInjuryAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">其他</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="otherSeriousInjuryAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.otherSeriousInjuryAmount}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="category">
+            <div class="type">
+              被困
+            </div>
+            <div class="info">
+              <div>
+                <div class="unit">企业职工</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="companyStuckingAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.companyStuckingAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">分包单位</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入"
+                         formControlName="subcontractStuckingAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.subcontractStuckingAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">其他</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="otherStuckingAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.otherStuckingAmount}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="category">
+            <div class="type">
+              失踪
+            </div>
+            <div class="info">
+              <div>
+                <div class="unit">企业职工</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="companyMissingAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.companyMissingAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">分包单位</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="subcontractMissingAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.subcontractMissingAmount}}</span>
+              </div>
+              <div>
+                <div class="unit">其他</div>
+                <div class="value">
+                  <input class="weui-input" type="text" placeholder="请输入" formControlName="otherMissingAmount"/>
+                </div>
+                <span class="error-info" style="color: red">{{formErrors.otherMissingAmount}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="segmentation"></div>
+      <div class="accident-brief">
+        <div>
+          <div class="item">
+            <div class="title">
+              <span>工程类型</span>
+            </div>
+
+            <div class="value">
+              <select name="select2" class="accident-type" formControlName="projType">
+                <option value="">请选择</option>
+                <option *ngFor="let project of projectTypeList" [value]="project?.code">{{project?.name}}</option>
+              </select>
+            </div>
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.projType}}</span>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>是否海外项目</span>
+          </div>
+          <div class="value isProject">
+            <label><input class="" type="radio" formControlName="isAbroad" name="isAbroad" value="01"/>是</label>
+            <label><input class="" type="radio" formControlName="isAbroad" name="isAbroad" value="00"/>否</label>
+          </div>
+        </div>
+        <div class="item">
+          <div class="title">
+            <span>是否投资项目</span>
+          </div>
+          <div class="value isProject">
+            <label><input class="" type="radio" formControlName="isInvest" name="isInvest" value="01"/>是</label>
+            <label><input class="" type="radio" formControlName="isInvest" name="isInvest" value="00"/>否</label>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin: 20px 0; text-align: center;">
+        <button
+          type="submit" class="btn btn-primary"
+          style="width: 80%;"
+          [ngStyle]="{'background': accidentForm.valid === true ? '#0069d9':'#c1c1c1','border-color': accidentForm.valid === true ? '#0069d9':'#c1c1c1'}"
+          [disabled]="!accidentForm.valid"
+        >提交
+        </button>
+        <button
+          type="crate" class="btn btn-primary"
+          style="width: 80%;"(click)="createSession()"
+        >创建应急小组
+        </button>
+      </div>
+    </form>
+
+    <div class="js_dialog" id="androidDialog2" style="display: none;">
+      <div class="weui-mask"></div>
+      <div class="weui-dialog weui-skin_android">
+        <div class="weui-loadmore" *ngIf="disableSubmitBtn">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+        <div *ngIf="!disableSubmitBtn">
+          <div class="weui-dialog__bd">
+            {{msgInfo}}
+          </div>
+          <div class="weui-dialog__ft">
+            <a type="btn" class="weui-dialog__btn weui-dialog__btn_default" (click)="goToStat()">确定</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="js_dialog" id="submitHintDialog" style="display: none;">
+      <div class="weui-mask"></div>
+      <div class="weui-dialog weui-skin_android">
+        <div class="weui-dialog__bd">
+          <div style="color: #999999">您是否确定要提交于
+            <span style="color: #333333">{{hintOccurTime}}</span>,
+            发生的
+            <span style="color: #333333">{{hintAccidentType}}事故</span>。
+          共造成 <span *ngIf="hintDiedCount">
+            <span style="color:#ff801a; font-weight: 600;">{{hintDiedCount}}</span>人死亡</span>
+            <span *ngIf="hintDiedCount&&(hintSeriousInjuryCount || hintMissingCount || hintStuckCount)">、</span>
+            <span *ngIf="hintSeriousInjuryCount">
+              <span style="color:#ff801a; font-weight: 600;">{{hintSeriousInjuryCount}}</span>人重伤</span>
+            <span *ngIf="hintSeriousInjuryCount&&(hintMissingCount || hintStuckCount)">、</span>
+            <span *ngIf="hintMissingCount">
+              <span style="color:#ff801a; font-weight: 600;">{{hintMissingCount}}</span>人失踪</span>
+            <span *ngIf="hintMissingCount&&hintStuckCount">、</span>
+            <span *ngIf="hintStuckCount">
+              <span style="color:#ff801a; font-weight: 600;">{{hintStuckCount}}</span>人被困</span>。
+            <div>事故简要经过为 <span style="color: #333333">{{hintContent}}</span></div>
+          </div>
+          <br>
+          <span>点击【确定】提交</span>
+        </div>
+        <div class="weui-dialog__ft">
+          <a type="btn" class="weui-dialog__btn weui-dialog__btn_default" (click)="onSubmit()">确定</a>
+
+          <a type="btn" class="weui-dialog__btn weui-dialog__btn_default" (click)="goToNew()">取消</a>
+        </div>
+      </div>
+    </div>
+    <!--<div class="js_dialog" id="peopleCountDialog" style="display: none;">-->
+    <!--<div class="weui-mask"></div>-->
+    <!--<div class="weui-dialog weui-skin_android">-->
+    <!--<div>-->
+    <!--<div class="weui-dialog__bd">-->
+    <!--未填写人员伤亡情况或是事故发生时间填写不正确，不能进行上报！-->
+    <!--</div>-->
+    <!--<div class="weui-dialog__ft">-->
+    <!--<a type="btn" class="weui-dialog__btn weui-dialog__btn_default" (click)="goToNew()">确定</a>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+  </div>
+</div>

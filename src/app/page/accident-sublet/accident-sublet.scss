@@ -1,0 +1,127 @@
+.detail-brief-info {
+  .item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eeeeee;
+    padding: 12px 0;
+    margin-left: 16px;
+    align-items: center;
+    .title {
+      font-size: 15px;
+      color: #333333;
+    }
+    .value {
+      //font-size: 13px;
+      color: #999999;
+      padding: 0 16px;
+      flex:1;
+      text-align: right;
+    }
+    .death-people{
+      margin:0 auto;
+      span{
+        font-size: 16px;
+        color: #333333;
+      }
+    }
+  }
+  .item:last-child{
+    border-bottom: 0px;
+  }
+}
+.media-info{
+  //.title{
+  //  width: 100%;
+  //  display: flex;
+  //  justify-content: space-between;
+  //  padding: 12px 0;
+  //  border-bottom: 1px solid #EEEEEE;
+  //  .type{
+  //    padding: 0 30px;
+  //  }
+  //  .type:nth-child(2){
+  //    border-left: 1px solid #EEEEEE;
+  //    border-right: 1px solid #EEEEEE;
+  //  }
+  //}
+  .value{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    //.thumbnail{
+    //  display: flex;
+    //  justify-content: flex-start;
+    //  align-items: center;
+    //  flex-wrap: wrap;
+    //  padding: 10px 0;
+    //}
+    .thumbnail-sublet{
+      margin: 3%;
+    }
+  }
+}
+.detail-content .accident-follow .title {
+  background: #f4fbfe;
+  padding: 16px;
+  font-size: 15px;
+  color: #333333;
+}
+
+.accident-brief-process {
+  .title {
+    background: #f4fbfe;
+    padding: 20px 15px 10px 15px;
+    position: relative;
+  }
+  .title:before {
+    content: '*';
+    position: absolute;
+    color: #ff0000;
+    font-size: 20px;
+    left: 6px;
+    top: 19px;
+  }
+  .info {
+    padding: 10px 0 0 10px;
+  }
+}
+
+.accident-injuries-stat {
+  .title{
+    background: #f4fbfe;
+    padding: 20px 15px 10px 15px;
+    position: relative;
+  }
+  .title:before {
+    content: '*';
+    position: absolute;
+    color: #ff0000;
+    font-size: 20px;
+    left: 6px;
+    top: 19px;
+  }
+  .content {
+    margin: 0 15px;
+    .category{
+      padding: 5px 0 5px 0;
+      border-bottom: 1px solid #eeeeee;
+      .type{
+        font-size: 12px;
+        color: #999999;
+      }
+      .info{
+        display: flex;
+        .unit{
+          font-size: 15px;
+          color: #666666;
+          padding:2px 0 2px 0;
+        }
+        .value input::-webkit-input-placeholder{
+          color: #999999;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

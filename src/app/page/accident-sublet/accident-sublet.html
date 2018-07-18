@@ -1,0 +1,233 @@
+<div class="page">
+  <!--<div class="app-header">-->
+  <!--<div class="app-header-navbar">-->
+  <!--<a (click)="goToStat()" class="back-home"><i class="fa fa-arrow-left"></i></a>-->
+  <!--<span style="">事故续报</span>-->
+  <!--</div>-->
+  <!--</div>-->
+  <div class="page__hd app-content">
+    <form [formGroup]="accidentSubletForm" (ngSubmit)="onSubmit()">
+      <div class="detail-content">
+        <div class="detail-brief-info">
+          <div class="item">
+            <div class="title">
+              <span>事故名称</span>
+            </div>
+            <div class="value">
+              <span>{{accidentInfo?.name}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="accident-brief-process">
+          <div class="title">
+            事故最新进展
+          </div>
+          <div class="info">
+            <textarea class="weui-textarea" placeholder="请描述事故最新进展" rows="4" name="accidentProcess"
+                      formControlName="latestProgress"></textarea>
+            <!--<div class="weui-textarea-counter"><span>0</span>/200</div>-->
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.latestProgress}}</span>
+        </div>
+
+        <div class="segmentation"></div>
+
+        <div class="media-info">
+          <!--<div class="title">-->
+          <!--<div class="type" id="tkp" (click)="takePhotos()">-->
+          <!--<img src="./assets/img/home/sg_kb_icon_08.png" style="width: 16px; height: 16px;" alt="">-->
+          <!--<span>拍照</span>-->
+          <!--</div>-->
+          <!--<div class="type">-->
+          <!--<img src="./assets/img/home/sg_kb_icon_09.png" style="width: 16px; height: 16px;" alt="">-->
+          <!--<span>录像</span>-->
+          <!--</div>-->
+          <!--<div class="type">-->
+          <!--<img src="./assets/img/home/sg_kb_icon_10.png" style="width: 16px; height: 16px;" alt="">-->
+          <!--<span>录音</span>-->
+          <!--</div>-->
+          <!--</div>-->
+          <div class="value" #thumbnail >
+            <img src="./assets/img/home/add_pic_icon.png" alt="" height="75" class="thumbnail-sublet" #addImg
+                 (click)="takePhotos()">
+            <!--<img *ngFor="let data of selectPhotos; let i = index;" [src]="data" alt="" style="width: 125px; height: 70px;"-->
+            <!--(click)="previewPhoto(i,selectPhotos)">-->
+            <!--<img src="./assets/img/home/loading.gif" alt="" *ngIf="isShowPicture">-->
+          </div>
+
+        </div>
+
+        <div class="accident-injuries-stat">
+          <div class="title">
+            事故伤亡情况
+          </div>
+          <div class="content">
+            <div class="category">
+              <div class="type">
+                死亡
+              </div>
+              <div class="info">
+                <div>
+                  <div class="unit">企业职工</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入" formControlName="companyDiedAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.companyDiedAmount}}</span>
+                </div>
+                <div>
+                  <div class="unit">分包单位</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入" formControlName="subcontractDiedAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.subcontractDiedAmount}}</span>
+                </div>
+                <div>
+                  <div class="unit">其他</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入" formControlName="otherDiedAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.otherDiedAmount}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="category">
+              <div class="type">
+                重伤
+              </div>
+              <div class="info">
+                <div>
+                  <div class="unit">企业职工</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入"
+                           formControlName="companySeriousInjuryAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.companySeriousInjuryAmount}}</span>
+
+                </div>
+                <div>
+                  <div class="unit">分包单位</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入"
+                           formControlName="subcontractSeriousInjuryAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.subcontractSeriousInjuryAmount}}</span>
+
+                </div>
+                <div>
+                  <div class="unit">其他</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入"
+                           formControlName="otherSeriousInjuryAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.otherSeriousInjuryAmount}}</span>
+
+                </div>
+              </div>
+            </div>
+            <div class="category">
+              <div class="type">
+                被困
+              </div>
+              <div class="info">
+                <div>
+                  <div class="unit">企业职工</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入" formControlName="companyStuckingAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.companyStuckingAmount}}</span>
+                </div>
+                <div>
+                  <div class="unit">分包单位</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入"
+                           formControlName="subcontractStuckingAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.subcontractStuckingAmount}}</span>
+
+                </div>
+                <div>
+                  <div class="unit">其他</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入" formControlName="otherStuckingAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.otherStuckingAmount}}</span>
+                </div>
+              </div>
+            </div>
+            <div class="category">
+              <div class="type">
+                失踪
+              </div>
+              <div class="info">
+                <div>
+                  <div class="unit">企业职工</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入" formControlName="companyMissingAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.companyMissingAmount}}</span>
+                </div>
+                <div>
+                  <div class="unit">分包单位</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入"
+                           formControlName="subcontractMissingAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.subcontractMissingAmount}}</span>
+
+                </div>
+                <div>
+                  <div class="unit">其他</div>
+                  <div class="value">
+                    <input class="weui-input" type="text" placeholder="请输入" formControlName="otherMissingAmount"/>
+                  </div>
+                  <span class="error-info" style="color: red">{{formErrors.otherMissingAmount}}</span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-brief-info">
+          <div class="item">
+            <div class="title">
+              <span>直接经济损失(万元)</span>
+            </div>
+            <div class="value" style="display: flex; text-align: center;">
+
+              <input class="weui-input" type="text" placeholder="请输入" formControlName="directEconomyDamage"/>
+              <!--<span style="white-space: nowrap;">万元</span>-->
+            </div>
+          </div>
+          <span class="error-info" style="color: red">{{formErrors.directEconomyDamage}}</span>
+        </div>
+
+        <div style="margin: 20px 0; text-align: center;">
+          <button
+            type="submit" class="btn btn-primary"
+            style="width: 80%;"
+            [ngStyle]="{'background': accidentSubletForm.valid === true ? '#0069d9':'#c1c1c1','border-color': accidentSubletForm.valid === true ? '#0069d9':'#c1c1c1'}"
+            [disabled]="!accidentSubletForm.valid">提交
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="js_dialog" id="androidDialog2" style="display: none;">
+      <div class="weui-mask"></div>
+      <div class="weui-dialog weui-skin_android">
+        <div class="weui-loadmore" *ngIf="disableSubmitBtn">
+          <i class="weui-loading"></i>
+          <span class="weui-loadmore__tips">正在加载</span>
+        </div>
+        <div *ngIf="!disableSubmitBtn">
+          <div class="weui-dialog__bd">
+            {{msgInfo}}
+          </div>
+          <div class="weui-dialog__ft">
+            <a type="btn" class="weui-dialog__btn weui-dialog__btn_default" (click)="goToStat()">确定</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

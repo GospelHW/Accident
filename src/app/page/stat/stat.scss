@@ -1,0 +1,174 @@
+.drag_to_refresh {
+  align-items: center;
+  padding-left: 155px;
+  background-color: #bbb;
+  color: yellow;
+  display: none;
+}
+
+.refresh {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #bbb;
+  color: green;
+  display: none;
+}
+
+.drag {
+  position: relative;
+  height: 100vh;
+}
+
+.stat-type .weui-bar__item_on {
+  background-color: #ffffff;
+  border-bottom: 2px solid #4c7cff;
+  font-size: 15px;
+  color: #508dff;
+}
+
+.navbar-item {
+  background: #ffffff;
+  font-size: 15px;
+  color: #333333;
+}
+
+.navbar-item:after {
+  border-right: 0px;
+}
+
+.accident-hint {
+  font-size: 12px;
+  color: #333;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+.accident-list {
+  padding-bottom: 78px;
+}
+
+.accident-list .accident-project {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /*padding: 17px 0 17px 16px;*/
+  padding-left: 16px;
+  position: relative;
+}
+
+.accident-list .accident-project .flag {
+  height: 35px;
+  min-width: 35px;
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 50%;
+  font-size: 12px!important;
+}
+
+.accident-list .accident-project .content {
+  flex: 1;
+  margin-left: 20px;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 19px 0 16px 0;
+}
+
+.accident-list .accident-project .content .title {
+  font-size: 16px;
+  color: #333333;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.accident-list .accident-project .content .second-letter {
+  width: 45px;
+  height: 18px;
+  line-height: 18px;
+  text-align: center;
+  background: #f99c16;
+  position: absolute;
+  font-size: 12px;
+  color: #fff;
+  left: 83%;
+  top: 4px;
+  border-radius: 25px 25px 25px 0;
+}
+
+.accident-list .accident-project .content .time {
+  padding: 10px 0;
+}
+
+.accident-list .accident-project .content .address, .accident-project .content .time {
+  font-size: 12px;
+  color: #999999;
+}
+
+.accident-list .accident-project .content .address {
+  display: flex;
+  align-items: center;
+}
+
+.accident-list .accident-project .content .address span {
+  padding-left: 5px;
+}
+
+.accident-list .accident-project .content .detail {
+  flex: 1;
+  width: calc(100vw - 71px - 50px);
+  .title {
+    width: 100%;
+  }
+}
+
+.accident-list .accident-project .content .action {
+  font-size: 12px;
+  color: #cc9966;
+  padding: 16px;
+  min-width: 56px;
+}
+
+.selected-time {
+  .weui-navbar {
+    position: relative;
+    width: 93%;
+    margin: 10px auto;
+    background: #FFFFFF;
+    z-index: 0;
+
+    .time-bar__item_on {
+      background-color: #ffffff;
+      font-size: 15px;
+      color: #508dff;
+    }
+    .navbar-item {
+      font-size: 14px;
+      border: 1px solid #EEEEEE;
+    }
+    .navbar-item:first-child {
+      border-top-left-radius: 25%;
+      border-bottom-left-radius: 25%;
+      border-right: 0px;
+    }
+    .navbar-item:last-child {
+      border-top-right-radius: 25%;
+      border-bottom-right-radius: 25%;
+      border-left: 0px;
+    }
+  }
+  .weui-navbar::after{
+    border-bottom: 0px;
+  }
+}
+
+.date-picker{
+  width: 93%;
+  margin: 0 auto;
+}

@@ -1,0 +1,58 @@
+.detail-title {
+  background: #f4fbfe;
+  padding: 18px 16px;
+  font-size: 15px;
+  color: #333333;
+  font-weight: 600;
+}
+
+.detail-content .detail-brief-info .item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eeeeee;
+  padding: 12px 0;
+  margin-left: 16px;
+  align-items: center;
+}
+.detail-content .detail-brief-info .item:last-child{
+  border-bottom: 0px;
+}
+
+.detail-content .detail-brief-info .item .title {
+  font-size: 15px;
+  color: #333333;
+}
+
+.detail-content .detail-brief-info .item .value {
+  font-size: 13px;
+  color: #999999;
+  padding: 0 16px;
+  flex:1;
+  align-items: center;
+  text-align: right;
+}
+
+.detail-content .detail-brief-info .death-people{
+  margin:0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+.detail-content .detail-brief-info .death-people span{
+  font-size: 14px;
+  color: #333333;
+
+}
+
+.accident-follow{
+  padding-bottom: 75px;
+}
+.detail-content .accident-follow .title {
+  background: #f4fbfe;
+  padding: 16px;
+  font-size: 15px;
+  color: #333333;
+}
+
+.people-number{
+  color: #333333;
+}

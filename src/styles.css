@@ -1,0 +1,135 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+*{
+  margin: 0px;
+}
+#app-container {
+  height: 100vh;
+  margin: 0;
+}
+
+.page {
+  height: 100%;
+}
+
+.app-header {
+  height: 7%;
+  width: 100%;
+  display: table;
+  background: #4f8efe;
+  color: #ffffff;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
+
+.app-header-navbar {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.app-content {
+  position: absolute;
+  width: 100%;
+}
+
+.segmentation{
+  height: 10px;
+  background: #f4fbfe;
+}
+
+/*timeline styles*/
+.timeline {
+  position: relative;
+}
+
+.timeline::after {
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  top: 10px;
+  left: 5%;
+  margin-left: -1px;
+  background-color: #eeeeee;
+  content: " ";
+}
+
+.timeline-item {
+  position: relative;
+  margin: 0.2rem 0;
+  padding-top: 30px;
+}
+.timeline-item .timeline-date {
+  position: absolute;
+  top: 11px;
+  left: 11%;
+  color: #333333;
+  font-size: 15px;
+  font-weight: 600;
+}
+.timeline-item .timeline-point {
+  box-sizing: border-box;
+  position: absolute;
+  left: 5.5%;
+  top: 10px;
+  margin-left: -15px;
+  border: 1px solid #cccccc;
+  border-radius: 100%;
+  text-align: center;
+  background-color: #fff;
+  z-index: 99;
+  font-size: 30px;
+  height: 25px;
+  line-height: 25px;
+  width: 25px;
+}
+.timeline-item .complete-status {
+  border: 1px solid #30d05f;
+  background-color: #30d05f;
+}
+.timeline-item .timeline-event {
+  box-sizing: border-box;
+  position: relative;
+  left: 7%;
+  width: 93%;
+  padding: 0.2rem 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.timeline-item .timeline-header {
+  font-size: 13px;
+  color: #999999;
+  line-height: 26px;
+  padding: 2px 0;
+}
+.timeline-item .timeline-body .photo img {
+  width: 49px;
+  height: 33px;
+  padding: 0 2px;
+}
+.timeline-item .timeline-body .voice{
+  padding: 10px 0;
+}
+.timeline-item .timeline-body .video,
+.timeline-item .timeline-body .voice{
+  display: flex;
+}
+.timeline-item .timeline-body .video > div,
+.timeline-item .timeline-body .voice > div{
+  margin-left: 8px;
+}
+
+.complete-status{
+  border: 1px solid #30d05f;
+  background-color: #30d05f;
+}
+.back-home{
+  position: absolute;
+  left: 0px;
+  padding: 0 16px;
+}

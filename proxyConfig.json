@@ -1,0 +1,7 @@
+{
+  "/safe": {
+    "target": "http://hseq.ccccltd.cn",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
