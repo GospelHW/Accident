@@ -38,7 +38,8 @@ export class PageAccidentDetailComponent implements OnInit {
     this.locationHref = window.location.href;
     this.currentUrl = decodeURIComponent(window.atob(this.locationHref.match(/param=(\S*)#\/detail/)[1]));
 
-    this.currentId = this.currentUrl.match(/accid=(\S*)&/)[1];
+    this.currentId = this.currentUrl.match(/accid=(\S*)&accident_id/)[1];
+    this.accidentId = this.currentUrl.match(/accident_id=(\S*)&txurl/)[1] || '';
 
     if (this.currentUrl.match(/txurl=(\S*)#/)) {
       this.txurl = this.currentUrl.match(/txurl=(\S*)#/)[1];
