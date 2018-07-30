@@ -42,7 +42,7 @@ export class AppComponent {
     this.subPref = this.currentUrl.match(/&pref=(\S*)&uvr/)[1]; // 获取accesstoken方法名及参数部分
     console.log('subPref', this.subPref);
 
-    // this._state.laborUserId = this.currentUrl.match(/accid=(\S*)&uvr/)[1];
+    this._state.laborUserId = this.currentUrl.match(/accid=(\S*)&uvr/)[1];
     this.txUserValidUrl = this.txUserValidUrl = this.currentUrl.match(/uvr=(\S*)&txurl/)[1];
     this._state.txSDKUrl = this.txSDKUrl = this.currentUrl.match(/txurl=(\S*)&txErrorurl/)[1];
     this.txUserValidErro = this.txUserValidErro = this.currentUrl.match(/txErrorurl=(\S*)/)[1];

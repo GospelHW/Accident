@@ -9,7 +9,8 @@ export class GlobalState {
   private _subscriptions: Map<string, Array<Function>> = new Map<string, Array<Function>>();
 
   // public aLBaseUrl = 'http://58.23.36.194:8087/';
-  public aLBaseUrl = 'http://220.160.104.225:8099/safe/';
+  public aLBaseUrl = 'http://hseq.ccccltd.cn/safe/';
+  // public aLBaseUrl = 'http://220.160.104.225:8099/safe/';
   // public aLBaseUrl = 'http://localhost:4200/';
   public userInfo = {};
   public accidentId = '';

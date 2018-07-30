@@ -85,20 +85,17 @@
               </div>
             </div>
           </div>
-          <div style="text-align: center; position: absolute; z-index: 9999; width: 100%; bottom: 10px;" *ngIf="isManager">
+          <div style="text-align: center; position: fixed; z-index: 9999; width: 100%; bottom: 10px;" *ngIf="isManager">
             <button type="button" class="btn btn-primary" (click)="newAccident()"
                     style="height: 75px; width: 75px; line-height: 75px; border-radius: 50%; z-index: 9999;">
               <i class="fa fa-plus fa-2x"></i>
             </button>
           </div>
+
           <div class="" *ngIf="accidentList.length <= 0">
             <div class="weui-loadmore weui-loadmore_line">
               <span class="weui-loadmore__tips">暂无数据</span>
-              <button
-                type="crate" class="btn btn-primary"
-                style="width: 80%;"(click)="createSession()"
-              >创建应急小组
-              </button>
+
             </div>
           </div>
         </div>
@@ -188,7 +185,7 @@
                       <!--<div class="action"><a (click)="detail(data)">前往</a></div>-->
                     </div>
                   </div>
-                  <div style="text-align: center; position: absolute; z-index: 9999; width: 100%; bottom: 10px;" *ngIf="isManager">
+                  <div style="text-align: center; position: fixed; z-index: 9999; width: 100%; bottom: 10px;" *ngIf="isManager">
                     <button type="button" class="btn btn-primary" (click)="newAccident()"
                             style="height: 75px; width: 75px; line-height: 75px; border-radius: 50%; ">
                       <i class="fa fa-plus fa-2x"></i>
@@ -197,11 +194,6 @@
                   <div *ngIf="accidentList.length <= 0">
                     <div class="weui-loadmore weui-loadmore_line">
                       <span class="weui-loadmore__tips">暂无数据</span>
-                      <button
-                        type="crate" class="btn btn-primary"
-                        style="width: 80%;"(click)="createSession()"
-                      >创建应急小组
-                      </button>
                     </div>
                   </div>
                 </div>

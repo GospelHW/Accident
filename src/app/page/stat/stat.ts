@@ -7,7 +7,6 @@ import {BsLocaleService} from 'ngx-bootstrap';
 import {defineLocale} from 'ngx-bootstrap';
 import {zhCnLocale} from 'ngx-bootstrap/locale';
 import $ from 'jquery';
-import wx from 'weixin-js-sdk';
 
 defineLocale(zhCnLocale.abbr, zhCnLocale);
 
@@ -42,16 +41,9 @@ export class PageStatComponent implements OnInit {
   isShowDate = false;
   isGT = false;
   dragHeight;
-  createSessions: any = [
-    {name: '抢险救灾组', people: ['sunyinglong', 'L10001200', 'L10000099', 'L10000097']},
-    {name: '应急指挥组', people: ['sunyinglong', 'L10001201', 'L10000098', 'L10000094']},
-    {name: '临时决策组', people: ['sunyinglong', 'L10001202', 'L10000096', 'L10000093']},
-    {name: '事故调查组', people: ['sunyinglong', 'L10001203', 'L10000095', 'L10000092']},
-  ];
 
   constructor(private router: Router, private _service: StatService, private _state: GlobalState,
               private render2: Renderer2, private localeService: BsLocaleService) {
-    this.userId = this._state.laborUserId;
     // this.userId = '2010149942';
 
     this.locale = 'zh-cn';
@@ -60,6 +52,7 @@ export class PageStatComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.userId = this._state.laborUserId;
     this.getUserInfo();
   }
 
@@ -96,40 +89,6 @@ export class PageStatComponent implements OnInit {
     this.render2.setStyle(this.dragRefresh.nativeElement, 'display', 'none');
   }
 
-  createSession() {
-    // for(const list in this.createSessions) {
-    //   wx.openEnterpriseChat({
-    //     userIds: 'sunyinglong;L10001200;L10000099;L10000097',    // 必填，参与会话的成员列表。格式为userid1;userid2;...，用分号隔开，最大限制为2000个。userid单个时为单聊，多个时为群聊。
-    //     groupName: '20180718' + list,  // 必填，会话名称。单聊时该参数传入空字符串""即可。
-    //     success: function (res) {
-    //       console.log("session:::", res);
-    //       alert(list + '创建成功');
-    //     },
-    //     fail: function (res) {
-    //       if (res.errMsg.indexOf('function not exist') > -1) {
-    //         alert('版本过低请升级')
-    //       }
-    //     }
-    //   });
-    // }
-    this.createSessions.forEach(ele => {
-      wx.openEnterpriseChat({
-        userIds: ele.people.join(":"),    // 必填，参与会话的成员列表。格式为userid1;userid2;...，用分号隔开，最大限制为2000个。userid单个时为单聊，多个时为群聊。
-        groupName: '20180718' + ele.name,  // 必填，会话名称。单聊时该参数传入空字符串""即可。
-        success: function (res) {
-          console.log("session:::", res);
-          alert(ele + '创建成功');
-        },
-        fail: function (res) {
-          if (res.errMsg.indexOf('function not exist') > -1) {
-            alert('版本过低请升级')
-          }
-        }
-      });
-    })
-
-  }
-
   getUserInfo() {
     this._service.getUserInfo(this.userId)
       .subscribe(res => {
@@ -141,7 +100,6 @@ export class PageStatComponent implements OnInit {
             userId: res.userid, username: res.user_name, oid: res.oid, projName: res.proj_name,
             grule: res.grule, roleType: res.role_type, typeext: res.typeext
           };
-          console.log('stat', this._state.userInfo);
           this.statUserId = res.userid;
           this.getAccidentList(res.userid, this.selectedTime);
         }

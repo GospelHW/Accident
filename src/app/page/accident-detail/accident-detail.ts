@@ -36,12 +36,15 @@ export class PageAccidentDetailComponent implements OnInit {
 
   ngOnInit() {
     this.locationHref = window.location.href;
-    this.currentUrl = decodeURIComponent(window.atob(this.locationHref.match(/param=(\S*)#\/detail/)[1]));
-
+    console.log('this.locationHref = ', this.locationHref);
+    this.currentUrl = decodeURIComponent(window.atob(this.locationHref.match(/param=(\S*)/)[1]));
+    console.log('this.currentUrl = ', this.currentUrl);
     this.currentId = this.currentUrl.match(/accid=(\S*)&accident_id/)[1];
+    console.log('this.currentId = ', this.currentId);
     this.accidentId = this.currentUrl.match(/accident_id=(\S*)&txurl/)[1] || '';
+    console.log('this.currentId = ', this.currentId);
 
-    if (this.currentUrl.match(/txurl=(\S*)#/)) {
+    if (this.currentUrl.match(/txurl=(\S*)#/)[1]) {
       this.txurl = this.currentUrl.match(/txurl=(\S*)#/)[1];
       this.authJJT();
     }
